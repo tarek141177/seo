@@ -1,0 +1,5 @@
+{
+  "name": "أداة تحليل الكلمات المفتاحية بالذكاء الاصطناعي",
+  "description": "أدخل كلمة مفتاحية للحصول على تحليل SEO كامل. يدعم العديد من مزودي خدمات الذكاء الاصطناعي بما في ذلك Google AI, OpenAI, Mistral, و OpenRouter.",
+  "requestFramePermissions": []
+}

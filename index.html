@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>أداة تحليل الكلمات المفتاحية</title>
+  <link rel="stylesheet" href="index.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/index.css">
+</head>
+<body>
+  <main>
+    <header>
+      <button id="settings-toggle" aria-label="فتح الإعدادات">⚙️</button>
+      <div id="logo-container"></div>
+      <h1>
+        أداة تحليل الكلمات المفتاحية بالذكاء الاصطناعي
+      </h1>
+      <p>أدخل كلمة مفتاحية واحصل على تحليل SEO كامل باستخدام نموذج الذكاء الاصطناعي الذي تختاره.</p>
+    </header>
+
+    <!-- Settings Panel -->
+    <section id="settings-panel" class="hidden">
+      <h2>الإعدادات</h2>
+      <p>الرجاء اختيار مزود الخدمة وإدخال مفتاح API الخاص بك للمتابعة.</p>
+      <form id="api-key-form">
+        <select id="provider-select" aria-label="اختر مزود الخدمة">
+          <option value="Google AI">Google AI</option>
+          <option value="OpenAI">OpenAI</option>
+          <option value="Mistral">Mistral</option>
+          <option value="OpenRouter">OpenRouter</option>
+        </select>
+        <input type="password" id="api-key-input" placeholder="أدخل مفتاح API هنا" required aria-label="مفتاح API">
+        <button type="submit" id="save-api-key">حفظ</button>
+      </form>
+       <p class="api-key-note">
+        سيتم حفظ إعداداتك في متصفحك فقط.
+      </p>
+    </section>
+
+    <!-- Initial Setup Message -->
+    <section id="setup-message" class="result-card hidden">
+       <h2>مرحباً بك!</h2>
+       <p>لبدء استخدام الأداة، يرجى إعداد مزود الخدمة ومفتاح API الخاص بك أولاً بالضغط على زر الحفظ.</p>
+    </section>
+
+    <form id="keyword-form" class="disabled">
+      <div class="input-row">
+        <input type="text" id="keyword-input" placeholder="مثال: أفضل هواتف ذكية 2024" required aria-label="الكلمة المفتاحية" disabled>
+        <button type="submit" id="analyze-button" disabled>تحليل</button>
+      </div>
+      <div class="input-row">
+        <input type="text" id="country-input" placeholder="البلد المستهدف (اختياري)" aria-label="البلد المستهدف" disabled>
+        <input type="text" id="language-input" placeholder="اللغة المستهدفة (اختياري)" aria-label="اللغة المستهدفة" disabled>
+      </div>
+    </form>
+    <section id="results-container" aria-live="polite"></section>
+  </main>
+  <script type="importmap">
+{
+  "imports": {
+    "@google/genai": "https://esm.sh/@google/genai@^0.7.0",
+    "chart.js": "https://esm.sh/chart.js@^4.5.0"
+  }
+}
+</script>
+  <script type="module" src="index.tsx"></script>
+<script type="module" src="/index.tsx"></script>
+</body>
+</html>

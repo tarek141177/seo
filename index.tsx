@@ -3,11 +3,10 @@
  * SPDX-License-Identifier: Apache-2.0
 */
 import { GoogleGenAI } from '@google/genai';
-import Chart from 'chart.js';
-import { Chart as ChartJS, registerables } from 'chart.js';
+import { Chart, registerables } from 'chart.js';
 
 // Register all chart.js components
-ChartJS.register(...registerables);
+Chart.register(...registerables);
 
 // --- Type Definitions ---
 type AIProvider = 'Google AI' | 'OpenAI' | 'Mistral' | 'OpenRouter';

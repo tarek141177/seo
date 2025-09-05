@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="ar" dir="rtl">
+<html lang="en" dir="ltr">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>أداة تحليل الكلمات المفتاحية</title>
+  <title>Keyword Analysis Tool</title>
   <link rel="stylesheet" href="index.css">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -13,47 +13,47 @@
 <body>
   <main>
     <header>
-      <button id="settings-toggle" aria-label="فتح الإعدادات">⚙️</button>
+      <button id="settings-toggle" aria-label="Open Settings">⚙️</button>
       <div id="logo-container"></div>
       <h1>
-        أداة تحليل الكلمات المفتاحية بالذكاء الاصطناعي
+        AI Keyword Analysis Tool
       </h1>
-      <p>أدخل كلمة مفتاحية واحصل على تحليل SEO كامل باستخدام نموذج الذكاء الاصطناعي الذي تختاره.</p>
+      <p>Enter a keyword and get a complete SEO analysis using the AI model of your choice.</p>
     </header>
 
     <!-- Settings Panel -->
     <section id="settings-panel" class="hidden">
-      <h2>الإعدادات</h2>
-      <p>الرجاء اختيار مزود الخدمة وإدخال مفتاح API الخاص بك للمتابعة.</p>
+      <h2>Settings</h2>
+      <p>Please select a service provider and enter your API key to continue.</p>
       <form id="api-key-form">
-        <select id="provider-select" aria-label="اختر مزود الخدمة">
+        <select id="provider-select" aria-label="Choose service provider">
           <option value="Google AI">Google AI</option>
           <option value="OpenAI">OpenAI</option>
           <option value="Mistral">Mistral</option>
           <option value="OpenRouter">OpenRouter</option>
         </select>
-        <input type="password" id="api-key-input" placeholder="أدخل مفتاح API هنا" required aria-label="مفتاح API">
-        <button type="submit" id="save-api-key">حفظ</button>
+        <input type="password" id="api-key-input" placeholder="Enter your API key here" required aria-label="API Key">
+        <button type="submit" id="save-api-key">Save</button>
       </form>
        <p class="api-key-note">
-        سيتم حفظ إعداداتك في متصفحك فقط.
+        Your settings will be saved in your browser only.
       </p>
     </section>
 
     <!-- Initial Setup Message -->
     <section id="setup-message" class="result-card hidden">
-       <h2>مرحباً بك!</h2>
-       <p>لبدء استخدام الأداة، يرجى إعداد مزود الخدمة ومفتاح API الخاص بك أولاً بالضغط على زر الحفظ.</p>
+       <h2>Welcome!</h2>
+       <p>To start using the tool, please set up your service provider and API key first by clicking the settings button.</p>
     </section>
 
     <form id="keyword-form" class="disabled">
       <div class="input-row">
-        <input type="text" id="keyword-input" placeholder="مثال: أفضل هواتف ذكية 2024" required aria-label="الكلمة المفتاحية" disabled>
-        <button type="submit" id="analyze-button" disabled>تحليل</button>
+        <input type="text" id="keyword-input" placeholder="Example: Best smartphones 2024" required aria-label="Keyword" disabled>
+        <button type="submit" id="analyze-button" disabled>Analyze</button>
       </div>
       <div class="input-row">
-        <input type="text" id="country-input" placeholder="البلد المستهدف (اختياري)" aria-label="البلد المستهدف" disabled>
-        <input type="text" id="language-input" placeholder="اللغة المستهدفة (اختياري)" aria-label="اللغة المستهدفة" disabled>
+        <input type="text" id="country-input" placeholder="Target country (optional)" aria-label="Target country" disabled>
+        <input type="text" id="language-input" placeholder="Target language (optional)" aria-label="Target language" disabled>
       </div>
     </form>
     <section id="results-container" aria-live="polite"></section>

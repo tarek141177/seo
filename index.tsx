@@ -69,7 +69,7 @@ function setupApplication(provider: AIProvider, apiKey: string) {
 
     } catch (error) { // FIX: Corrected catch block syntax.
         console.error("Failed to initialize:", error);
-        renderError("فشل تهيئة العميل. يرجى التحقق من مفتاح API الخاص بك.");
+        renderError("Failed to initialize client. Please check your API key.");
         // Keep UI disabled if initialization fails
         showSetup();
     }
@@ -96,7 +96,7 @@ async function generateAndSetLogo() {
 
         const base64ImageBytes: string = response.generatedImages[0].image.imageBytes;
         const imageUrl = `data:image/png;base64,${base64ImageBytes}`;
-        logoContainer.innerHTML = `<img src="${imageUrl}" alt="شعار أداة تحليل الكلمات المفتاحية" />`;
+        logoContainer.innerHTML = `<img src="${imageUrl}" alt="Keyword Analysis Tool Logo" />`;
     } catch (error) {
         console.error('Error generating logo:', error);
         logoContainer.style.display = 'none';
@@ -205,7 +205,7 @@ async function performAnalysis(keyword: string, country: string, language: strin
 form.addEventListener('submit', async (e) => {
     e.preventDefault();
     if (!currentProvider || !currentApiKey) {
-        renderError("يرجى إعداد مزود الخدمة ومفتاح API الخاص بك أولاً.");
+        renderError("Please set up your service provider and API key first.");
         return;
     }
 
@@ -227,7 +227,7 @@ form.addEventListener('submit', async (e) => {
 
     } catch (error) {
         console.error(error);
-        renderError('حدث خطأ أثناء تحليل الكلمة المفتاحية. يرجى التأكد من أن الإدخال صحيح والمحاولة مرة أخرى.');
+        renderError('An error occurred during keyword analysis. Please make sure the input is correct and try again.');
     } finally {
         setLoading(false);
     }
@@ -240,7 +240,7 @@ function setLoading(isLoading: boolean) {
     countryInput.disabled = isLoading;
     languageInput.disabled = isLoading;
     button.disabled = isLoading;
-    button.textContent = isLoading ? 'جاري التحليل...' : 'تحليل';
+    button.textContent = isLoading ? 'Analyzing...' : 'Analyze';
 }
 
 function renderSearchVolumeChart(value: number) {
@@ -249,7 +249,7 @@ function renderSearchVolumeChart(value: number) {
     searchVolumeChart = new Chart(ctx, {
         type: 'bar',
         data: {
-            labels: ['متوسط البحث الشهري'],
+            labels: ['Monthly Search Volume'],
             datasets: [{
                 data: [value],
                 backgroundColor: ['#4285F4'],
@@ -263,7 +263,7 @@ function renderSearchVolumeChart(value: number) {
                 legend: { display: false },
                 title: {
                     display: true,
-                    text: value.toLocaleString('ar-EG'),
+                    text: value.toLocaleString('en-US'),
                     font: { size: 16, family: "'Cairo', sans-serif" },
                     color: '#3c4043',
                     padding: { bottom: 10 }
@@ -355,28 +355,28 @@ function renderResults(data: any, sources: any) {
     const resultsHtml = `
         ${(searchVolumeValue !== undefined || searchVolume) ? `
         <div class="result-card">
-          <h2>📊 حجم البحث</h2>
-          <p>${searchVolume || 'غير متوفر'}</p>
+          <h2>📊 Search Volume</h2>
+          <p>${searchVolume || 'Not available'}</p>
           ${searchVolumeValue !== undefined ? '<div class="chart-container"><canvas id="search-volume-chart"></canvas></div>' : ''}
         </div>` : ''}
 
         ${(competitionScore !== undefined || competition) ? `
         <div class="result-card">
-          <h2>⚔️ صعوبة المنافسة</h2>
-          <p>${competition || 'غير متوفر'}</p>
+          <h2>⚔️ Competition Difficulty</h2>
+          <p>${competition || 'Not available'}</p>
           ${competitionScore !== undefined ? '<div class="chart-container"><canvas id="competition-chart"></canvas></div>' : ''}
         </div>` : ''}
         
         <div class="result-card">
-        <h2>💡 بدائل مقترحة</h2>
+        <h2>💡 Suggested Alternatives</h2>
         <ul>${(alternatives || []).map((item: string) => `<li>${item}</li>`).join('')}</ul>
         </div>
         <div class="result-card">
-        <h2>✍️ عناوين مقالات</h2>
+        <h2>✍️ Article Titles</h2>
         <ul>${(suggestedTitles || []).map((item: string) => `<li>${item}</li>`).join('')}</ul>
         </div>
         <div class="result-card">
-        <h2>🔑 كلمات مفتاحية طويلة</h2>
+        <h2>🔑 Long-tail Keywords</h2>
         <ul>${(longTailKeywords || []).map((item: string) => `<li>${item}</li>`).join('')}</ul>
         </div>
     `;
@@ -401,7 +401,7 @@ function renderResults(data: any, sources: any) {
         if (sourcesHtml) {
             resultsContainer.insertAdjacentHTML('beforeend', `
             <div class="result-card">
-                <h2>📚 المصادر (بحث جوجل)</h2>
+                <h2>📚 Sources (Google Search)</h2>
                 <ul>${sourcesHtml}</ul>
             </div>
             `);
